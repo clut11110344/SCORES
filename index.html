@@ -38,6 +38,7 @@
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+            box-sizing: border-box;
         }
         thead th {
             background-color: #6c7ae0;
@@ -83,32 +84,37 @@
             position: sticky;
             background-color: inherit;
             z-index: 5;
+            box-sizing: border-box;
         }
         .frozen-col-header {
             z-index: 15;
         }
-        
-        /* 定義並凍結第一欄 */
+        /* 第一欄 */
         .frozen-col-1 {
             width: 100px;
+            min-width: 100px;
+            max-width: 100px;
             left: 0;
-            border-right: 1px solid #ddd;
         }
-        
-        /* 定義並凍結第二欄 */
+        /* 第二欄 */
         .frozen-col-2 {
             width: 110px;
+            min-width: 110px;
+            max-width: 110px;
             left: 100px;
-            border-right: 1px solid #ddd;
         }
-        
-        /* 定義並凍結第三欄 */
+        /* 第三欄 */
         .frozen-col-3 {
             width: 220px;
+            min-width: 220px;
+            max-width: 220px;
             left: 210px;
             border-right: 2px solid #b4b4b4;
         }
-
+        /* 只在第三欄加 border-right，前兩欄不要加 */
+        .frozen-col-1, .frozen-col-2 {
+            border-right: none;
+        }
         /* 確保凍結欄位有正確的背景色 */
         thead .frozen-col {
             background-color: #6c7ae0;
@@ -479,7 +485,7 @@
                     <td class="sub-total">77</td>
                     <td class="comment">想像力夠，節拍及個人特色...，音準...key...</td>
                     <td>37</td>
-                    <td>24</td>
+                    <td class="24"></td>
                     <td>16</td>
                     <td class="sub-total">77</td>
                     <td class="comment">感覺有一點點小跑調，感情詮釋都有到位。</td>
@@ -649,10 +655,10 @@
                     <td>35</td>
                     <td class="25"></td>
                     <td>15</td>
-                    <td class="sub-total">75</td>
+                    class="sub-total">75</td>
                     <td class="comment">感覺唱到後面有點沒力，還有高音的假音要再穩一點。</td>
                     <td>35</td>
-                    <td class="23"></td>
+                    class="23"></td>
                     <td>15</td>
                     <td class="sub-total">73</td>
                     <td class="comment">太緊張。</td>
@@ -665,17 +671,17 @@
                     <td>49</td>
                     <td>29</td>
                     <td>20</td>
-                    <td class="sub-total">98</td>
+                    class="sub-total">98</td>
                     <td class="comment">太誇張了，有天份，自然表現，音色、音準、節奏ok，個人特色足。</td>
                     <td>48</td>
-                    <td>28</td>
+                    <td class="28"></td>
                     <td>20</td>
-                    <td class="sub-total">96</td>
+                    class="sub-total">96</td>
                     <td class="comment">氣很穩，歌聲優美，高音和轉音都很棒，高音不要變假音會更好聽！</td>
                     <td>48</td>
                     <td class="29"></td>
                     <td>20</td>
-                    <td class="sub-total">97</td>
+                    class="sub-total">97</td>
                     <td class="comment">很有大將之風，掌握好。</td>
                     <td class="final-total-score">291</td>
                 </tr>
