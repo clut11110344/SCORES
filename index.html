@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歌唱比賽總決賽成績單</title>
+    <title>歌唱比賽總決賽成績單 (凍結窗格版)</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -32,6 +32,10 @@
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        td:last-child, th:last-child {
+            border-right: none;
         }
         thead th {
             background-color: #6c7ae0;
@@ -63,7 +67,7 @@
             white-space: normal;
             min-width: 250px;
         }
-        td.total-score, td.sub-total {
+        td.sub-total {
             font-weight: bold;
         }
         td.final-total-score {
@@ -71,6 +75,50 @@
             font-size: 1.1em;
             background-color: rgba(108, 122, 224, 0.1);
         }
+
+        /********** 凍結窗格 CSS **********/
+        
+        /* 設定要凍結的欄位 */
+        th:nth-child(1), td:nth-child(1),
+        th:nth-child(2), td:nth-child(2),
+        th:nth-child(3), td:nth-child(3) {
+            position: -webkit-sticky;
+            position: sticky;
+            z-index: 5;
+        }
+
+        /* 確保凍結的表頭背景色正確 */
+        thead th:nth-child(1),
+        thead th:nth-child(2),
+        thead th:nth-child(3) {
+            z-index: 11;
+        }
+
+        /* 設定凍結欄位的左右位置 */
+        th:nth-child(1), td:nth-child(1) { left: 0; }
+        th:nth-child(2), td:nth-child(2) { left: 95px; } /* 調整此值以符合第一欄寬度 */
+        th:nth-child(3), td:nth-child(3) { left: 200px; } /* 調整此值以符合前兩欄寬度總和 */
+
+        /* 確保凍結欄位有背景色，才不會被底下滾動的內容透出 */
+        td:nth-child(1), td:nth-child(2), td:nth-child(3) {
+            background-color: #fff;
+        }
+        tbody tr:nth-child(even) td:nth-child(1),
+        tbody tr:nth-child(even) td:nth-child(2),
+        tbody tr:nth-child(even) td:nth-child(3) {
+            background-color: #f8f9fa;
+        }
+        tbody tr:hover td:nth-child(1),
+        tbody tr:hover td:nth-child(2),
+        tbody tr:hover td:nth-child(3) {
+            background-color: #e9ecef;
+        }
+
+        /* 為最後一個凍結的欄位加上右邊框線，增加立體感 */
+        th:nth-child(3), td:nth-child(3) {
+            border-right: 2px solid #b4b4b4;
+        }
+
     </style>
 </head>
 <body>
@@ -647,7 +695,9 @@
                     const bCell = b.querySelectorAll('td')[columnIndex].textContent.trim();
 
                     if (columnType === 'number') {
-                        return parseFloat(aCell) - parseFloat(bCell);
+                        const aNum = parseFloat(aCell) || 0;
+                        const bNum = parseFloat(bCell) || 0;
+                        return aNum - bNum;
                     }
                     
                     return aCell.localeCompare(bCell, 'zh-Hant');
