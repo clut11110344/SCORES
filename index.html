@@ -26,20 +26,18 @@
             max-height: 80vh;
             overflow-y: auto;
             overflow-x: auto;
+            background-color: #fff;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             white-space: nowrap;
+            background-color: #fff;
         }
         th, td {
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-        }
-        td:last-child, th:last-child {
-            border-right: none;
         }
         thead th {
             background-color: #6c7ae0;
@@ -75,32 +73,47 @@
             font-weight: bold;
         }
         td.final-total-score {
-             font-weight: bold;
+            font-weight: bold;
             font-size: 1.1em;
             background-color: rgba(108, 122, 224, 0.1);
         }
 
         /********** 凍結窗格 CSS (修復版) **********/
         .frozen-col {
-            position: -webkit-sticky;
             position: sticky;
+            background-color: inherit;
             z-index: 5;
         }
         .frozen-col-header {
-            z-index: 11;
+            z-index: 15;
         }
         
         /* 定義並凍結第一欄 */
-        .frozen-col-1 { width: 100px; left: 0; }
+        .frozen-col-1 {
+            width: 100px;
+            left: 0;
+            border-right: 1px solid #ddd;
+        }
         
         /* 定義並凍結第二欄 */
-        .frozen-col-2 { width: 110px; left: 100px; }
+        .frozen-col-2 {
+            width: 110px;
+            left: 100px;
+            border-right: 1px solid #ddd;
+        }
         
         /* 定義並凍結第三欄 */
-        .frozen-col-3 { width: 220px; left: 210px; border-right-width: 2px; border-right-color: #b4b4b4; }
+        .frozen-col-3 {
+            width: 220px;
+            left: 210px;
+            border-right: 2px solid #b4b4b4;
+        }
 
-        /* 確保凍結欄位有背景色，才不會被底下滾動的內容透出 */
-        .frozen-col {
+        /* 確保凍結欄位有正確的背景色 */
+        thead .frozen-col {
+            background-color: #6c7ae0;
+        }
+        tbody .frozen-col {
             background-color: #fff;
         }
         tbody tr:nth-child(even) .frozen-col {
@@ -382,7 +395,7 @@
                     <td class="sub-total">94</td>
                     <td class="comment">音色乾淨，節奏感好，高音有...技巧感情投入 good！</td>
                     <td>47</td>
-                    <td>26</td>
+                    <td class="26"></td>
                     <td>17</td>
                     <td class="sub-total">90</td>
                     <td class="comment">喜歡你的假音，有帶小朋友的感覺，喜歡真假音轉換。</td>
@@ -618,7 +631,7 @@
                     <td class="sub-total">95</td>
                     <td class="comment">很有歌手的架勢，聲音也很好聽，換氣可以再無聲地換氣。</td>
                     <td>47</td>
-                    <td>29</td>
+                    <td class="29"></td>
                     <td>20</td>
                     <td class="sub-total">96</td>
                     <td class="comment">聲音渾厚，造型佳。</td>
@@ -634,12 +647,12 @@
                     <td class="sub-total">75</td>
                     <td class="comment">太緊張，選歌...key，聲音太緊，加油！</td>
                     <td>35</td>
-                    <td>25</td>
+                    <td class="25"></td>
                     <td>15</td>
                     <td class="sub-total">75</td>
                     <td class="comment">感覺唱到後面有點沒力，還有高音的假音要再穩一點。</td>
                     <td>35</td>
-                    <td>23</td>
+                    <td class="23"></td>
                     <td>15</td>
                     <td class="sub-total">73</td>
                     <td class="comment">太緊張。</td>
@@ -660,7 +673,7 @@
                     <td class="sub-total">96</td>
                     <td class="comment">氣很穩，歌聲優美，高音和轉音都很棒，高音不要變假音會更好聽！</td>
                     <td>48</td>
-                    <td>29</td>
+                    <td class="29"></td>
                     <td>20</td>
                     <td class="sub-total">97</td>
                     <td class="comment">很有大將之風，掌握好。</td>
