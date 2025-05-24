@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歌唱比賽總決賽成績單 (獨立滑桿版)</title>
+    <title>歌唱比賽總決賽成績單 (修復版)</title>
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box; /* 優化 CSS 盒模型 */
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
@@ -20,11 +23,9 @@
             width: 100%;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            
-            /* --- 核心修改：讓容器本身可以捲動 --- */
-            max-height: 80vh; /* 設定容器最大高度為螢幕的80% */
-            overflow-y: auto; /* 內容超過高度時，出現垂直捲軸 */
-            overflow-x: auto; /* 內容超過寬度時，出現水平捲軸 */
+            max-height: 80vh;
+            overflow-y: auto;
+            overflow-x: auto;
         }
         table {
             width: 100%;
@@ -79,42 +80,34 @@
             background-color: rgba(108, 122, 224, 0.1);
         }
 
-        /********** 凍結窗格 CSS **********/
-        
-        th:nth-child(1), td:nth-child(1),
-        th:nth-child(2), td:nth-child(2),
-        th:nth-child(3), td:nth-child(3) {
+        /********** 凍結窗格 CSS (修復版) **********/
+        .frozen-col {
             position: -webkit-sticky;
             position: sticky;
             z-index: 5;
         }
-
-        thead th:nth-child(1),
-        thead th:nth-child(2),
-        thead th:nth-child(3) {
+        .frozen-col-header {
             z-index: 11;
         }
         
-        th:nth-child(1), td:nth-child(1) { left: 0; }
-        th:nth-child(2), td:nth-child(2) { left: 95px; } 
-        th:nth-child(3), td:nth-child(3) { left: 200px; }
+        /* 定義並凍結第一欄 */
+        .frozen-col-1 { width: 100px; left: 0; }
+        
+        /* 定義並凍結第二欄 */
+        .frozen-col-2 { width: 110px; left: 100px; }
+        
+        /* 定義並凍結第三欄 */
+        .frozen-col-3 { width: 220px; left: 210px; border-right-width: 2px; border-right-color: #b4b4b4; }
 
-        td:nth-child(1), td:nth-child(2), td:nth-child(3) {
+        /* 確保凍結欄位有背景色，才不會被底下滾動的內容透出 */
+        .frozen-col {
             background-color: #fff;
         }
-        tbody tr:nth-child(even) td:nth-child(1),
-        tbody tr:nth-child(even) td:nth-child(2),
-        tbody tr:nth-child(even) td:nth-child(3) {
+        tbody tr:nth-child(even) .frozen-col {
             background-color: #f8f9fa;
         }
-        tbody tr:hover td:nth-child(1),
-        tbody tr:hover td:nth-child(2),
-        tbody tr:hover td:nth-child(3) {
+        tbody tr:hover .frozen-col {
             background-color: #e9ecef;
-        }
-
-        th:nth-child(3), td:nth-child(3) {
-            border-right: 2px solid #b4b4b4;
         }
 
     </style>
@@ -126,9 +119,9 @@
         <table>
             <thead>
                 <tr>
-                    <th data-type="number">出場順序<span class="sort-indicator"></span></th>
-                    <th data-type="string">姓名<span class="sort-indicator"></span></th>
-                    <th data-type="string">歌名<span class="sort-indicator"></span></th>
+                    <th data-type="number" class="frozen-col frozen-col-header frozen-col-1">出場順序<span class="sort-indicator"></span></th>
+                    <th data-type="string" class="frozen-col frozen-col-header frozen-col-2">姓名<span class="sort-indicator"></span></th>
+                    <th data-type="string" class="frozen-col frozen-col-header frozen-col-3">歌名<span class="sort-indicator"></span></th>
                     <th data-type="number">評審一技巧<span class="sort-indicator"></span></th>
                     <th data-type="number">評審一音色<span class="sort-indicator"></span></th>
                     <th data-type="number">評審一台風<span class="sort-indicator"></span></th>
@@ -149,9 +142,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>陳韋澤</td>
-                    <td>Scenes of us</td>
+                    <td class="frozen-col frozen-col-1">1</td>
+                    <td class="frozen-col frozen-col-2">陳韋澤</td>
+                    <td class="frozen-col frozen-col-3">Scenes of us</td>
                     <td>40</td>
                     <td>25</td>
                     <td>18</td>
@@ -170,9 +163,9 @@
                     <td class="final-total-score">248</td>
                 </tr>
                 <tr>
-                    <td>2</td>
-                    <td>徐光汶</td>
-                    <td>虹之間</td>
+                    <td class="frozen-col frozen-col-1">2</td>
+                    <td class="frozen-col frozen-col-2">徐光汶</td>
+                    <td class="frozen-col frozen-col-3">虹之間</td>
                     <td>38</td>
                     <td>25</td>
                     <td>15</td>
@@ -191,9 +184,9 @@
                     <td class="final-total-score">238</td>
                 </tr>
                 <tr>
-                    <td>3</td>
-                    <td>王昱翔</td>
-                    <td>太空人</td>
+                    <td class="frozen-col frozen-col-1">3</td>
+                    <td class="frozen-col frozen-col-2">王昱翔</td>
+                    <td class="frozen-col frozen-col-3">太空人</td>
                     <td>40</td>
                     <td>25</td>
                     <td>15</td>
@@ -212,9 +205,9 @@
                     <td class="final-total-score">246</td>
                 </tr>
                 <tr>
-                    <td>4</td>
-                    <td>謝宗宇</td>
-                    <td>才二十三</td>
+                    <td class="frozen-col frozen-col-1">4</td>
+                    <td class="frozen-col frozen-col-2">謝宗宇</td>
+                    <td class="frozen-col frozen-col-3">才二十三</td>
                     <td>38</td>
                     <td>27</td>
                     <td>15</td>
@@ -233,9 +226,9 @@
                     <td class="final-total-score">269</td>
                 </tr>
                 <tr>
-                    <td>5</td>
-                    <td>宋博文</td>
-                    <td>怎麼了</td>
+                    <td class="frozen-col frozen-col-1">5</td>
+                    <td class="frozen-col frozen-col-2">宋博文</td>
+                    <td class="frozen-col frozen-col-3">怎麼了</td>
                     <td>43</td>
                     <td>28</td>
                     <td>16</td>
@@ -254,9 +247,9 @@
                     <td class="final-total-score">265</td>
                 </tr>
                 <tr>
-                    <td>6</td>
-                    <td>邱品綺</td>
-                    <td>雨愛</td>
+                    <td class="frozen-col frozen-col-1">6</td>
+                    <td class="frozen-col frozen-col-2">邱品綺</td>
+                    <td class="frozen-col frozen-col-3">雨愛</td>
                     <td>36</td>
                     <td>25</td>
                     <td>16</td>
@@ -275,9 +268,9 @@
                     <td class="final-total-score">237</td>
                 </tr>
                 <tr>
-                    <td>7</td>
-                    <td>陳韋堉</td>
-                    <td>慢冷</td>
+                    <td class="frozen-col frozen-col-1">7</td>
+                    <td class="frozen-col frozen-col-2">陳韋堉</td>
+                    <td class="frozen-col frozen-col-3">慢冷</td>
                     <td>41</td>
                     <td>28</td>
                     <td>15</td>
@@ -296,9 +289,9 @@
                     <td class="final-total-score">268</td>
                 </tr>
                 <tr>
-                    <td>8</td>
-                    <td>簡O恩</td>
-                    <td>阿飛的小蝴蝶</td>
+                    <td class="frozen-col frozen-col-1">8</td>
+                    <td class="frozen-col frozen-col-2">簡O恩</td>
+                    <td class="frozen-col frozen-col-3">阿飛的小蝴蝶</td>
                     <td>46</td>
                     <td>30</td>
                     <td>17</td>
@@ -317,9 +310,9 @@
                     <td class="final-total-score">274</td>
                 </tr>
                 <tr>
-                    <td>9</td>
-                    <td>李佩蓉</td>
-                    <td>人生的歌</td>
+                    <td class="frozen-col frozen-col-1">9</td>
+                    <td class="frozen-col frozen-col-2">李佩蓉</td>
+                    <td class="frozen-col frozen-col-3">人生的歌</td>
                     <td>46</td>
                     <td>28</td>
                     <td>15</td>
@@ -338,9 +331,9 @@
                     <td class="final-total-score">273</td>
                 </tr>
                 <tr>
-                    <td>10</td>
-                    <td>陳瑩</td>
-                    <td>這是最後一次</td>
+                    <td class="frozen-col frozen-col-1">10</td>
+                    <td class="frozen-col frozen-col-2">陳瑩</td>
+                    <td class="frozen-col frozen-col-3">這是最後一次</td>
                     <td>40</td>
                     <td>25</td>
                     <td>14</td>
@@ -359,9 +352,9 @@
                     <td class="final-total-score">257</td>
                 </tr>
                 <tr>
-                    <td>11</td>
-                    <td>劉佩琳</td>
-                    <td>願得一人心</td>
+                    <td class="frozen-col frozen-col-1">11</td>
+                    <td class="frozen-col frozen-col-2">劉佩琳</td>
+                    <td class="frozen-col frozen-col-3">願得一人心</td>
                     <td>42</td>
                     <td>26</td>
                     <td>16</td>
@@ -380,9 +373,9 @@
                     <td class="final-total-score">261</td>
                 </tr>
                 <tr>
-                    <td>12</td>
-                    <td>巫亞涵</td>
-                    <td>有一種悲傷</td>
+                    <td class="frozen-col frozen-col-1">12</td>
+                    <td class="frozen-col frozen-col-2">巫亞涵</td>
+                    <td class="frozen-col frozen-col-3">有一種悲傷</td>
                     <td>48</td>
                     <td>30</td>
                     <td>16</td>
@@ -401,9 +394,9 @@
                     <td class="final-total-score">273</td>
                 </tr>
                 <tr>
-                    <td>13</td>
-                    <td>林思云</td>
-                    <td>微加幸福</td>
+                    <td class="frozen-col frozen-col-1">13</td>
+                    <td class="frozen-col frozen-col-2">林思云</td>
+                    <td class="frozen-col frozen-col-3">微加幸福</td>
                     <td>46</td>
                     <td>25</td>
                     <td>15</td>
@@ -422,9 +415,9 @@
                     <td class="final-total-score">274</td>
                 </tr>
                 <tr>
-                    <td>14</td>
-                    <td>郭昱妏</td>
-                    <td>易燃易爆炸</td>
+                    <td class="frozen-col frozen-col-1">14</td>
+                    <td class="frozen-col frozen-col-2">郭昱妏</td>
+                    <td class="frozen-col frozen-col-3">易燃易爆炸</td>
                     <td>45</td>
                     <td>28</td>
                     <td>16</td>
@@ -443,9 +436,9 @@
                     <td class="final-total-score">275</td>
                 </tr>
                 <tr>
-                    <td>15</td>
-                    <td>錢郁晴</td>
-                    <td>不知所措</td>
+                    <td class="frozen-col frozen-col-1">15</td>
+                    <td class="frozen-col frozen-col-2">錢郁晴</td>
+                    <td class="frozen-col frozen-col-3">不知所措</td>
                     <td>44</td>
                     <td>28</td>
                     <td>14</td>
@@ -464,9 +457,9 @@
                     <td class="final-total-score">260</td>
                 </tr>
                 <tr>
-                    <td>16</td>
-                    <td>王郁薇</td>
-                    <td>給我一首歌的時間</td>
+                    <td class="frozen-col frozen-col-1">16</td>
+                    <td class="frozen-col frozen-col-2">王郁薇</td>
+                    <td class="frozen-col frozen-col-3">給我一首歌的時間</td>
                     <td>38</td>
                     <td>25</td>
                     <td>14</td>
@@ -485,9 +478,9 @@
                     <td class="final-total-score">235</td>
                 </tr>
                 <tr>
-                    <td>17</td>
-                    <td>全O杰</td>
-                    <td>如果你也聽說</td>
+                    <td class="frozen-col frozen-col-1">17</td>
+                    <td class="frozen-col frozen-col-2">全O杰</td>
+                    <td class="frozen-col frozen-col-3">如果你也聽說</td>
                     <td>43</td>
                     <td>26</td>
                     <td>15</td>
@@ -506,9 +499,9 @@
                     <td class="final-total-score">262</td>
                 </tr>
                 <tr>
-                    <td>18</td>
-                    <td>江以文</td>
-                    <td>重度寂寞</td>
+                    <td class="frozen-col frozen-col-1">18</td>
+                    <td class="frozen-col frozen-col-2">江以文</td>
+                    <td class="frozen-col frozen-col-3">重度寂寞</td>
                     <td>50</td>
                     <td>30</td>
                     <td>18</td>
@@ -527,9 +520,9 @@
                     <td class="final-total-score">291</td>
                 </tr>
                 <tr>
-                    <td>19</td>
-                    <td>郭O愷</td>
-                    <td>趁我還會記</td>
+                    <td class="frozen-col frozen-col-1">19</td>
+                    <td class="frozen-col frozen-col-2">郭O愷</td>
+                    <td class="frozen-col frozen-col-3">趁我還會記</td>
                     <td>47</td>
                     <td>28</td>
                     <td>17</td>
@@ -548,9 +541,9 @@
                     <td class="final-total-score">270</td>
                 </tr>
                 <tr>
-                    <td>20</td>
-                    <td>黃雅琪</td>
-                    <td>雲與海</td>
+                    <td class="frozen-col frozen-col-1">20</td>
+                    <td class="frozen-col frozen-col-2">黃雅琪</td>
+                    <td class="frozen-col frozen-col-3">雲與海</td>
                     <td>40</td>
                     <td>26</td>
                     <td>14</td>
@@ -569,9 +562,9 @@
                     <td class="final-total-score">251</td>
                 </tr>
                 <tr>
-                    <td>21</td>
-                    <td>廖家宜</td>
-                    <td>預感</td>
+                    <td class="frozen-col frozen-col-1">21</td>
+                    <td class="frozen-col frozen-col-2">廖家宜</td>
+                    <td class="frozen-col frozen-col-3">預感</td>
                     <td>44</td>
                     <td>28</td>
                     <td>14</td>
@@ -590,9 +583,9 @@
                     <td class="final-total-score">262</td>
                 </tr>
                 <tr>
-                    <td>22</td>
-                    <td>徐柄彰</td>
-                    <td>於是</td>
+                    <td class="frozen-col frozen-col-1">22</td>
+                    <td class="frozen-col frozen-col-2">徐柄彰</td>
+                    <td class="frozen-col frozen-col-3">於是</td>
                     <td>38</td>
                     <td>26</td>
                     <td>16</td>
@@ -611,9 +604,9 @@
                     <td class="final-total-score">256</td>
                 </tr>
                 <tr>
-                    <td>23</td>
-                    <td>林蕙慈</td>
-                    <td>Let everything happen</td>
+                    <td class="frozen-col frozen-col-1">23</td>
+                    <td class="frozen-col frozen-col-2">林蕙慈</td>
+                    <td class="frozen-col frozen-col-3">Let everything happen</td>
                     <td>50</td>
                     <td>30</td>
                     <td>17</td>
@@ -632,9 +625,9 @@
                     <td class="final-total-score">288</td>
                 </tr>
                 <tr>
-                    <td>24</td>
-                    <td>陳伯均</td>
-                    <td>淘汰</td>
+                    <td class="frozen-col frozen-col-1">24</td>
+                    <td class="frozen-col frozen-col-2">陳伯均</td>
+                    <td class="frozen-col frozen-col-3">淘汰</td>
                     <td>34</td>
                     <td>25</td>
                     <td>14</td>
@@ -653,9 +646,9 @@
                     <td class="final-total-score">223</td>
                 </tr>
                 <tr>
-                    <td>25</td>
-                    <td>江玉馨</td>
-                    <td>大大的擁抱</td>
+                    <td class="frozen-col frozen-col-1">25</td>
+                    <td class="frozen-col frozen-col-2">江玉馨</td>
+                    <td class="frozen-col frozen-col-3">大大的擁抱</td>
                     <td>49</td>
                     <td>29</td>
                     <td>20</td>
@@ -708,7 +701,7 @@
                 tbody.innerHTML = '';
                 sortedRows.forEach(row => {
                     tbody.appendChild(row);
-});
+                });
             };
             
             headers.forEach((header, index) => {
