@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>歌唱比賽總決賽成績單 (凍結窗格版)</title>
+    <title>歌唱比賽總決賽成績單 (獨立滑桿版)</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -18,10 +18,13 @@
         }
         .table-container {
             width: 100%;
-            overflow-x: auto;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
+            
+            /* --- 核心修改：讓容器本身可以捲動 --- */
+            max-height: 80vh; /* 設定容器最大高度為螢幕的80% */
+            overflow-y: auto; /* 內容超過高度時，出現垂直捲軸 */
+            overflow-x: auto; /* 內容超過寬度時，出現水平捲軸 */
         }
         table {
             width: 100%;
@@ -78,7 +81,6 @@
 
         /********** 凍結窗格 CSS **********/
         
-        /* 設定要凍結的欄位 */
         th:nth-child(1), td:nth-child(1),
         th:nth-child(2), td:nth-child(2),
         th:nth-child(3), td:nth-child(3) {
@@ -87,19 +89,16 @@
             z-index: 5;
         }
 
-        /* 確保凍結的表頭背景色正確 */
         thead th:nth-child(1),
         thead th:nth-child(2),
         thead th:nth-child(3) {
             z-index: 11;
         }
-
-        /* 設定凍結欄位的左右位置 */
+        
         th:nth-child(1), td:nth-child(1) { left: 0; }
-        th:nth-child(2), td:nth-child(2) { left: 95px; } /* 調整此值以符合第一欄寬度 */
-        th:nth-child(3), td:nth-child(3) { left: 200px; } /* 調整此值以符合前兩欄寬度總和 */
+        th:nth-child(2), td:nth-child(2) { left: 95px; } 
+        th:nth-child(3), td:nth-child(3) { left: 200px; }
 
-        /* 確保凍結欄位有背景色，才不會被底下滾動的內容透出 */
         td:nth-child(1), td:nth-child(2), td:nth-child(3) {
             background-color: #fff;
         }
@@ -114,7 +113,6 @@
             background-color: #e9ecef;
         }
 
-        /* 為最後一個凍結的欄位加上右邊框線，增加立體感 */
         th:nth-child(3), td:nth-child(3) {
             border-right: 2px solid #b4b4b4;
         }
@@ -710,7 +708,7 @@
                 tbody.innerHTML = '';
                 sortedRows.forEach(row => {
                     tbody.appendChild(row);
-                });
+});
             };
             
             headers.forEach((header, index) => {
