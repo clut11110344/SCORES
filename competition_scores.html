@@ -38,6 +38,7 @@
             color: white;
             position: sticky;
             top: 0;
+            z-index: 10;
             cursor: pointer;
             user-select: none;
             transition: background-color 0.2s ease;
@@ -50,6 +51,7 @@
             width: 16px;
             text-align: center;
             opacity: 0.6;
+            font-size: 0.8em;
         }
         tbody tr:nth-child(even) {
             background-color: #f8f9fa;
@@ -61,8 +63,11 @@
             white-space: normal;
             min-width: 250px;
         }
-        td.total-score {
+        td.total-score, td.sub-total {
             font-weight: bold;
+        }
+        td.final-total-score {
+             font-weight: bold;
             font-size: 1.1em;
             background-color: rgba(108, 122, 224, 0.1);
         }
@@ -75,526 +80,552 @@
         <table>
             <thead>
                 <tr>
-                    <th>姓名<span class="sort-indicator"></span></th>
-                    <th>歌名<span class="sort-indicator"></span></th>
-                    <th>評審一技巧<span class="sort-indicator"></span></th>
-                    <th>評審一音色<span class="sort-indicator"></span></th>
-                    <th>評審一台風<span class="sort-indicator"></span></th>
-                    <th>評審一小計<span class="sort-indicator"></span></th>
-                    <th class="comment">評審一評語<span class="sort-indicator"></span></th>
-                    <th>評審二技巧<span class="sort-indicator"></span></th>
-                    <th>評審二音色<span class="sort-indicator"></span></th>
-                    <th>評審二台風<span class="sort-indicator"></span></th>
-                    <th>評審二小計<span class="sort-indicator"></span></th>
-                    <th class="comment">評審二評語<span class="sort-indicator"></span></th>
-                    <th>評審三技巧<span class="sort-indicator"></span></th>
-                    <th>評審三音色<span class="sort-indicator"></span></th>
-                    <th>評審三台風<span class="sort-indicator"></span></th>
-                    <th>評審三小計<span class="sort-indicator"></span></th>
-                    <th class="comment">評審三評語<span class="sort-indicator"></span></th>
-                    <th>總分<span class="sort-indicator"></span></th>
+                    <th data-type="number">出場順序<span class="sort-indicator"></span></th>
+                    <th data-type="string">姓名<span class="sort-indicator"></span></th>
+                    <th data-type="string">歌名<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審一技巧<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審一音色<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審一台風<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審一小計<span class="sort-indicator"></span></th>
+                    <th data-type="string" class="comment">評審一評語<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審二技巧<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審二音色<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審二台風<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審二小計<span class="sort-indicator"></span></th>
+                    <th data-type="string" class="comment">評審二評語<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審三技巧<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審三音色<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審三台風<span class="sort-indicator"></span></th>
+                    <th data-type="number">評審三小計<span class="sort-indicator"></span></th>
+                    <th data-type="string" class="comment">評審三評語<span class="sort-indicator"></span></th>
+                    <th data-type="number">總分<span class="sort-indicator"></span></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>1</td>
                     <td>陳韋澤</td>
                     <td>Scenes of us</td>
                     <td>40</td>
                     <td>25</td>
                     <td>18</td>
-                    <td>83</td>
+                    <td class="sub-total">83</td>
                     <td class="comment">台風穩健，音色可再柔軟些，咬字可再清楚。</td>
                     <td>37</td>
                     <td>23</td>
                     <td>17</td>
-                    <td>77</td>
+                    <td class="sub-total">77</td>
                     <td class="comment">咬字、拍子很穩，但高音跟真音轉換可以更好。</td>
                     <td>43</td>
                     <td>25</td>
                     <td>20</td>
-                    <td>88</td>
+                    <td class="sub-total">88</td>
                     <td class="comment">配件有特色。</td>
-                    <td class="total-score">248</td>
+                    <td class="final-total-score">248</td>
                 </tr>
                 <tr>
+                    <td>2</td>
                     <td>徐光汶</td>
                     <td>虹之間</td>
                     <td>38</td>
                     <td>25</td>
                     <td>15</td>
-                    <td>78</td>
+                    <td class="sub-total">78</td>
                     <td class="comment">情感投入不錯，中氣再足些，高音有點吃力。</td>
                     <td>42</td>
                     <td>25</td>
                     <td>16</td>
-                    <td>83</td>
+                    <td class="sub-total">83</td>
                     <td class="comment">氣息很穩，高音很穩，但尾音跟抖音要小心。</td>
                     <td>39</td>
                     <td>22</td>
                     <td>16</td>
-                    <td>77</td>
+                    <td class="sub-total">77</td>
                     <td class="comment">咬字不夠清楚。</td>
-                    <td class="total-score">238</td>
+                    <td class="final-total-score">238</td>
                 </tr>
                 <tr>
+                    <td>3</td>
                     <td>王昱翔</td>
                     <td>太空人</td>
                     <td>40</td>
                     <td>25</td>
                     <td>15</td>
-                    <td>80</td>
+                    <td class="sub-total">80</td>
                     <td class="comment">聲音不錯，高音穩定，整體ok，聲音穿透力。</td>
                     <td>40</td>
                     <td>25</td>
                     <td>15</td>
-                    <td>80</td>
+                    <td class="sub-total">80</td>
                     <td class="comment">氣息很足，台風很穩健，但真音轉假音不要斷層。</td>
                     <td>43</td>
                     <td>26</td>
                     <td>17</td>
-                    <td>86</td>
+                    <td class="sub-total">86</td>
                     <td class="comment"></td>
-                    <td class="total-score">246</td>
+                    <td class="final-total-score">246</td>
                 </tr>
                 <tr>
+                    <td>4</td>
                     <td>謝宗宇</td>
                     <td>才二十三</td>
                     <td>38</td>
                     <td>27</td>
                     <td>15</td>
-                    <td>80</td>
+                    <td class="sub-total">80</td>
                     <td class="comment">音色好聽，但穩定度要再加強，用假音太多。</td>
                     <td>47</td>
                     <td>28</td>
                     <td>17</td>
-                    <td>92</td>
+                    <td class="sub-total">92</td>
                     <td class="comment">假音很好聽，真音假音轉換很好，很有技巧。</td>
                     <td>48</td>
                     <td>29</td>
                     <td>20</td>
-                    <td>97</td>
+                    <td class="sub-total">97</td>
                     <td class="comment">聲音有磁性。</td>
-                    <td class="total-score">269</td>
+                    <td class="final-total-score">269</td>
                 </tr>
                 <tr>
+                    <td>5</td>
                     <td>宋博文</td>
                     <td>怎麼了</td>
                     <td>43</td>
                     <td>28</td>
                     <td>16</td>
-                    <td>87</td>
+                    <td class="sub-total">87</td>
                     <td class="comment">感情投入高，音色好，穩健，頗有運動感，Good！</td>
                     <td>44</td>
                     <td>26</td>
                     <td>18</td>
-                    <td>88</td>
+                    <td class="sub-total">88</td>
                     <td class="comment">尾音很特別，但副歌可以再激昂一點，有爆發力。</td>
                     <td>44</td>
                     <td>26</td>
                     <td>20</td>
-                    <td>90</td>
+                    <td class="sub-total">90</td>
                     <td class="comment">台風穩健，曲合宜，具有情感。</td>
-                    <td class="total-score">265</td>
+                    <td class="final-total-score">265</td>
                 </tr>
                 <tr>
+                    <td>6</td>
                     <td>邱品綺</td>
                     <td>雨愛</td>
                     <td>36</td>
                     <td>25</td>
                     <td>16</td>
-                    <td>77</td>
+                    <td class="sub-total">77</td>
                     <td class="comment">高音穩定，節拍需再加強，感情投入要再表現多些。</td>
                     <td>37</td>
                     <td>25</td>
                     <td>16</td>
-                    <td>78</td>
+                    <td class="sub-total">78</td>
                     <td class="comment">音準很穩，但台風可以再好一點，不要害怕看觀眾。</td>
                     <td>42</td>
                     <td>23</td>
                     <td>17</td>
-                    <td>82</td>
+                    <td class="sub-total">82</td>
                     <td class="comment">感情再強化，咬字可以再清晰。</td>
-                    <td class="total-score">237</td>
+                    <td class="final-total-score">237</td>
                 </tr>
                 <tr>
+                    <td>7</td>
                     <td>陳韋堉</td>
                     <td>慢冷</td>
                     <td>41</td>
                     <td>28</td>
                     <td>15</td>
-                    <td>84</td>
+                    <td class="sub-total">84</td>
                     <td class="comment">低音有磁性，音色不錯，轉音好，顫音可有可無。</td>
                     <td>45</td>
                     <td>27</td>
                     <td>17</td>
-                    <td>89</td>
+                    <td class="sub-total">89</td>
                     <td class="comment">喉嚨音很好聽，共鳴和轉音都很棒！</td>
                     <td>46</td>
                     <td>29</td>
                     <td>20</td>
-                    <td>95</td>
+                    <td class="sub-total">95</td>
                     <td class="comment">造型佳。</td>
-                    <td class="total-score">268</td>
+                    <td class="final-total-score">268</td>
                 </tr>
                 <tr>
+                    <td>8</td>
                     <td>簡O恩</td>
                     <td>阿飛的小蝴蝶</td>
                     <td>46</td>
                     <td>30</td>
                     <td>17</td>
-                    <td>93</td>
+                    <td class="sub-total">93</td>
                     <td class="comment">音準穩，高低轉音技巧佳，音色厚實，有舞台魅力。</td>
                     <td>48</td>
                     <td>27</td>
                     <td>18</td>
-                    <td>93</td>
+                    <td class="sub-total">93</td>
                     <td class="comment">整體很穩健！</td>
                     <td>43</td>
                     <td>26</td>
                     <td>19</td>
-                    <td>88</td>
+                    <td class="sub-total">88</td>
                     <td class="comment">有情感，選曲佳。</td>
-                    <td class="total-score">274</td>
+                    <td class="final-total-score">274</td>
                 </tr>
                 <tr>
+                    <td>9</td>
                     <td>李佩蓉</td>
                     <td>人生的歌</td>
                     <td>46</td>
                     <td>28</td>
                     <td>15</td>
-                    <td>89</td>
+                    <td class="sub-total">89</td>
                     <td class="comment">感情音色俱佳，有到位，感情投入很夠。</td>
                     <td>46</td>
                     <td>27</td>
                     <td>17</td>
-                    <td>90</td>
+                    <td class="sub-total">90</td>
                     <td class="comment">高音很穩，高音已放光芒，是否可以稍微修飾。</td>
                     <td>46</td>
                     <td>28</td>
                     <td>20</td>
-                    <td>94</td>
+                    <td class="sub-total">94</td>
                     <td class="comment">造型佳。</td>
-                    <td class="total-score">273</td>
+                    <td class="final-total-score">273</td>
                 </tr>
                 <tr>
+                    <td>10</td>
                     <td>陳瑩</td>
                     <td>這是最後一次</td>
                     <td>40</td>
                     <td>25</td>
                     <td>14</td>
-                    <td>80</td>
+                    <td class="sub-total">80</td>
                     <td class="comment">力度夠，感情投入可再多些，選歌...技巧要加強。</td>
                     <td>43</td>
                     <td>25</td>
                     <td>17</td>
-                    <td>85</td>
+                    <td class="sub-total">85</td>
                     <td class="comment">高音假音轉換，高音放後面比較不穩。</td>
                     <td>46</td>
                     <td>27</td>
                     <td>19</td>
-                    <td>92</td>
+                    <td class="sub-total">92</td>
                     <td class="comment">台風穩健。</td>
-                    <td class="total-score">257</td>
+                    <td class="final-total-score">257</td>
                 </tr>
                 <tr>
+                    <td>11</td>
                     <td>劉佩琳</td>
                     <td>願得一人心</td>
                     <td>42</td>
                     <td>26</td>
                     <td>16</td>
-                    <td>84</td>
+                    <td class="sub-total">84</td>
                     <td class="comment">音色不錯，中氣足，A段...感情可再多些。</td>
                     <td>47</td>
                     <td>27</td>
                     <td>18</td>
-                    <td>92</td>
+                    <td class="sub-total">92</td>
                     <td class="comment">有穿透到我的耳尖，音準也很棒。</td>
                     <td>41</td>
                     <td>24</td>
                     <td>20</td>
-                    <td>85</td>
+                    <td class="sub-total">85</td>
                     <td class="comment">將情感深刻融入歌曲。</td>
-                    <td class="total-score">261</td>
+                    <td class="final-total-score">261</td>
                 </tr>
                 <tr>
+                    <td>12</td>
                     <td>巫亞涵</td>
                     <td>有一種悲傷</td>
                     <td>48</td>
                     <td>30</td>
                     <td>16</td>
-                    <td>94</td>
+                    <td class="sub-total">94</td>
                     <td class="comment">音色乾淨，節奏感好，高音有...技巧感情投入 good！</td>
                     <td>47</td>
                     <td>26</td>
                     <td>17</td>
-                    <td>90</td>
+                    <td class="sub-total">90</td>
                     <td class="comment">喜歡你的假音，有帶小朋友的感覺，喜歡真假音轉換。</td>
                     <td>43</td>
                     <td>26</td>
                     <td>20</td>
-                    <td>89</td>
+                    <td class="sub-total">89</td>
                     <td class="comment">台風穩健。</td>
-                    <td class="total-score">273</td>
+                    <td class="final-total-score">273</td>
                 </tr>
                 <tr>
+                    <td>13</td>
                     <td>林思云</td>
                     <td>微加幸福</td>
                     <td>46</td>
                     <td>25</td>
                     <td>15</td>
-                    <td>87</td>
+                    <td class="sub-total">87</td>
                     <td class="comment">咬字清晰，音色不錯，高音假音轉換...，太緊張。</td>
                     <td>49</td>
                     <td>29</td>
                     <td>18</td>
-                    <td>96</td>
+                    <td class="sub-total">96</td>
                     <td class="comment">轉音假音很穩！！感覺要被你的歌聲溶化掉。</td>
                     <td>45</td>
                     <td>26</td>
                     <td>20</td>
-                    <td>91</td>
+                    <td class="sub-total">91</td>
                     <td class="comment">聲音甜美，造型佳。</td>
-                    <td class="total-score">274</td>
+                    <td class="final-total-score">274</td>
                 </tr>
                 <tr>
+                    <td>14</td>
                     <td>郭昱妏</td>
                     <td>易燃易爆炸</td>
                     <td>45</td>
                     <td>28</td>
                     <td>16</td>
-                    <td>89</td>
+                    <td class="sub-total">89</td>
                     <td class="comment">台風大方，高低音轉換佳，但A段...感情投入...</td>
                     <td>47</td>
                     <td>28</td>
                     <td>18</td>
-                    <td>93</td>
+                    <td class="sub-total">93</td>
                     <td class="comment">中氣很足，很穩健...為高音改...台風很穩健。</td>
                     <td>45</td>
                     <td>28</td>
                     <td>20</td>
-                    <td>93</td>
+                    <td class="sub-total">93</td>
                     <td class="comment">聲音有特色，掌握台上氣氛。</td>
-                    <td class="total-score">275</td>
+                    <td class="final-total-score">275</td>
                 </tr>
                 <tr>
+                    <td>15</td>
                     <td>錢郁晴</td>
                     <td>不知所措</td>
                     <td>44</td>
                     <td>28</td>
                     <td>14</td>
-                    <td>86</td>
+                    <td class="sub-total">86</td>
                     <td class="comment">效果器有點多，中氣再足些，整體...</td>
                     <td>44</td>
                     <td>26</td>
                     <td>16</td>
-                    <td>86</td>
+                    <td class="sub-total">86</td>
                     <td class="comment">表現很棒，拍子和表現很棒，有冠軍相。</td>
                     <td>43</td>
                     <td>26</td>
                     <td>19</td>
-                    <td>88</td>
+                    <td class="sub-total">88</td>
                     <td class="comment">台風穩健。</td>
-                    <td class="total-score">260</td>
+                    <td class="final-total-score">260</td>
                 </tr>
                 <tr>
+                    <td>16</td>
                     <td>王郁薇</td>
                     <td>給我一首歌的時間</td>
                     <td>38</td>
                     <td>25</td>
                     <td>14</td>
-                    <td>77</td>
+                    <td class="sub-total">77</td>
                     <td class="comment">想像力夠，節拍及個人特色...，音準...key...</td>
                     <td>37</td>
                     <td>24</td>
                     <td>16</td>
-                    <td>77</td>
+                    <td class="sub-total">77</td>
                     <td class="comment">感覺有一點點小跑調，感情詮釋都有到位。</td>
                     <td>40</td>
                     <td>24</td>
                     <td>17</td>
-                    <td>81</td>
+                    <td class="sub-total">81</td>
                     <td class="comment">歌曲的掌握度需要再加強。</td>
-                    <td class="total-score">235</td>
+                    <td class="final-total-score">235</td>
                 </tr>
                 <tr>
+                    <td>17</td>
                     <td>全O杰</td>
                     <td>如果你也聽說</td>
                     <td>43</td>
                     <td>26</td>
                     <td>15</td>
-                    <td>84</td>
+                    <td class="sub-total">84</td>
                     <td class="comment">感情豐富，台風穩健，但音準有點跑掉...</td>
                     <td>48</td>
                     <td>28</td>
                     <td>18</td>
-                    <td>94</td>
+                    <td class="sub-total">94</td>
                     <td class="comment">不要用太多技巧去打斷了情緒。</td>
                     <td>41</td>
                     <td>25</td>
                     <td>18</td>
-                    <td>84</td>
+                    <td class="sub-total">84</td>
                     <td class="comment">中氣十足，造型可以更好。</td>
-                    <td class="total-score">262</td>
+                    <td class="final-total-score">262</td>
                 </tr>
                 <tr>
+                    <td>18</td>
                     <td>江以文</td>
                     <td>重度寂寞</td>
                     <td>50</td>
                     <td>30</td>
                     <td>18</td>
-                    <td>98</td>
+                    <td class="sub-total">98</td>
                     <td class="comment">技巧佳，高音有特色，轉音完美，感情投入... very good</td>
                     <td>48</td>
                     <td>29</td>
                     <td>19</td>
-                    <td>96</td>
+                    <td class="sub-total">96</td>
                     <td class="comment">不管是儀態、外表，都非常有歌手的樣子。</td>
                     <td>48</td>
                     <td>29</td>
                     <td>20</td>
-                    <td>97</td>
+                    <td class="sub-total">97</td>
                     <td class="comment">選曲非常用心，聲音渾厚。</td>
-                    <td class="total-score">291</td>
+                    <td class="final-total-score">291</td>
                 </tr>
                 <tr>
+                    <td>19</td>
                     <td>郭O愷</td>
                     <td>趁我還會記</td>
                     <td>47</td>
                     <td>28</td>
                     <td>17</td>
-                    <td>92</td>
+                    <td class="sub-total">92</td>
                     <td class="comment">感情豐富，聲音有特色，假音穩定，整體...</td>
                     <td>44</td>
                     <td>26</td>
                     <td>18</td>
-                    <td>88</td>
+                    <td class="sub-total">88</td>
                     <td class="comment">很有感情，有把來賓帶到情境裡。</td>
                     <td>44</td>
                     <td>26</td>
                     <td>20</td>
-                    <td>90</td>
+                    <td class="sub-total">90</td>
                     <td class="comment">歌聲帶動情感，再強化技巧。</td>
-                    <td class="total-score">270</td>
+                    <td class="final-total-score">270</td>
                 </tr>
                 <tr>
+                    <td>20</td>
                     <td>黃雅琪</td>
                     <td>雲與海</td>
                     <td>40</td>
                     <td>26</td>
                     <td>14</td>
-                    <td>80</td>
+                    <td class="sub-total">80</td>
                     <td class="comment">太爆衝，高音虛，較沒情感，可再歷練，假音可再自然些。</td>
                     <td>46</td>
                     <td>27</td>
                     <td>17</td>
-                    <td>90</td>
+                    <td class="sub-total">90</td>
                     <td class="comment">聲音飽滿但選歌不適合你，喉嚨要放鬆。</td>
                     <td>40</td>
                     <td>24</td>
                     <td>17</td>
-                    <td>81</td>
+                    <td class="sub-total">81</td>
                     <td class="comment">太緊張，麥克風要拿好。</td>
-                    <td class="total-score">251</td>
+                    <td class="final-total-score">251</td>
                 </tr>
                 <tr>
+                    <td>21</td>
                     <td>廖家宜</td>
                     <td>預感</td>
                     <td>44</td>
                     <td>28</td>
                     <td>14</td>
-                    <td>86</td>
+                    <td class="sub-total">86</td>
                     <td class="comment">音色有厚度，轉音也好，高音較弱，太緊張。</td>
                     <td>48</td>
                     <td>29</td>
                     <td>16</td>
-                    <td>93</td>
+                    <td class="sub-total">93</td>
                     <td class="comment">氣長，節奏很穩，拍子沒跑掉，氣息要再穩一點。</td>
                     <td>41</td>
                     <td>25</td>
                     <td>17</td>
-                    <td>83</td>
+                    <td class="sub-total">83</td>
                     <td class="comment">越唱越好, 需要時間磨練。</td>
-                    <td class="total-score">262</td>
+                    <td class="final-total-score">262</td>
                 </tr>
                 <tr>
+                    <td>22</td>
                     <td>徐柄彰</td>
                     <td>於是</td>
                     <td>38</td>
                     <td>26</td>
                     <td>16</td>
-                    <td>80</td>
+                    <td class="sub-total">80</td>
                     <td class="comment">感情佳，穩定，換氣音，太緊張，低音較弱。</td>
                     <td>45</td>
                     <td>26</td>
                     <td>17</td>
-                    <td>88</td>
+                    <td class="sub-total">88</td>
                     <td class="comment">轉音技巧很好，但氣息和拍子不太穩，有點小跑掉。</td>
                     <td>43</td>
                     <td>26</td>
                     <td>19</td>
-                    <td>88</td>
+                    <td class="sub-total">88</td>
                     <td class="comment">音色優美, 歌曲詮釋有情感。</td>
-                    <td class="total-score">256</td>
+                    <td class="final-total-score">256</td>
                 </tr>
                 <tr>
+                    <td>23</td>
                     <td>林蕙慈</td>
                     <td>Let everything happen</td>
                     <td>50</td>
                     <td>30</td>
                     <td>17</td>
-                    <td>97</td>
+                    <td class="sub-total">97</td>
                     <td class="comment">音色美，太穩健了，高低音有穩住，節拍有準，ok，有職業水準。</td>
                     <td>48</td>
                     <td>29</td>
                     <td>18</td>
-                    <td>95</td>
+                    <td class="sub-total">95</td>
                     <td class="comment">很有歌手的架勢，聲音也很好聽，換氣可以再無聲地換氣。</td>
                     <td>47</td>
                     <td>29</td>
                     <td>20</td>
-                    <td>96</td>
+                    <td class="sub-total">96</td>
                     <td class="comment">聲音渾厚，造型佳。</td>
-                    <td class="total-score">288</td>
+                    <td class="final-total-score">288</td>
                 </tr>
                 <tr>
+                    <td>24</td>
                     <td>陳伯均</td>
                     <td>淘汰</td>
                     <td>34</td>
                     <td>25</td>
                     <td>14</td>
-                    <td>75</td>
+                    <td class="sub-total">75</td>
                     <td class="comment">太緊張，選歌...key，聲音太緊，加油！</td>
                     <td>35</td>
                     <td>25</td>
                     <td>15</td>
-                    <td>75</td>
+                    <td class="sub-total">75</td>
                     <td class="comment">感覺唱到後面有點沒力，還有高音的假音要再穩一點。</td>
                     <td>35</td>
                     <td>23</td>
                     <td>15</td>
-                    <td>73</td>
+                    <td class="sub-total">73</td>
                     <td class="comment">太緊張。</td>
-                    <td class="total-score">223</td>
+                    <td class="final-total-score">223</td>
                 </tr>
                 <tr>
+                    <td>25</td>
                     <td>江玉馨</td>
                     <td>大大的擁抱</td>
                     <td>49</td>
                     <td>29</td>
                     <td>20</td>
-                    <td>98</td>
+                    <td class="sub-total">98</td>
                     <td class="comment">太誇張了，有天份，自然表現，音色、音準、節奏ok，個人特色足。</td>
                     <td>48</td>
                     <td>28</td>
                     <td>20</td>
-                    <td>96</td>
+                    <td class="sub-total">96</td>
                     <td class="comment">氣很穩，歌聲優美，高音和轉音都很棒，高音不要變假音會更好聽！</td>
                     <td>48</td>
                     <td>29</td>
                     <td>20</td>
-                    <td>97</td>
+                    <td class="sub-total">97</td>
                     <td class="comment">很有大將之風，掌握好。</td>
-                    <td class="total-score">291</td>
+                    <td class="final-total-score">291</td>
                 </tr>
             </tbody>
         </table>
@@ -606,35 +637,16 @@
             const headers = table.querySelectorAll('thead th');
             const tbody = table.querySelector('tbody');
 
-            headers.forEach((header, index) => {
-                header.addEventListener('click', () => {
-                    // Reset other headers
-                    headers.forEach((otherHeader, otherIndex) => {
-                        if (index !== otherIndex) {
-                            otherHeader.setAttribute('data-sort-direction', '');
-                            otherHeader.querySelector('.sort-indicator').textContent = '';
-                        }
-                    });
-
-                    const currentDirection = header.getAttribute('data-sort-direction') || 'desc';
-                    const newDirection = currentDirection === 'asc' ? 'desc' : 'asc';
-                    header.setAttribute('data-sort-direction', newDirection);
-                    header.querySelector('.sort-indicator').textContent = newDirection === 'asc' ? '▲' : '▼';
-                    
-                    sortColumn(index, newDirection);
-                });
-            });
-
             const sortColumn = (columnIndex, direction) => {
+                const header = headers[columnIndex];
+                const columnType = header.getAttribute('data-type') || 'string';
                 const rows = Array.from(tbody.querySelectorAll('tr'));
                 
                 const sortedRows = rows.sort((a, b) => {
                     const aCell = a.querySelectorAll('td')[columnIndex].textContent.trim();
                     const bCell = b.querySelectorAll('td')[columnIndex].textContent.trim();
 
-                    const isNumeric = !isNaN(parseFloat(aCell)) && isFinite(aCell) && !isNaN(parseFloat(bCell)) && isFinite(bCell);
-
-                    if (isNumeric) {
+                    if (columnType === 'number') {
                         return parseFloat(aCell) - parseFloat(bCell);
                     }
                     
@@ -645,12 +657,40 @@
                     sortedRows.reverse();
                 }
                 
-                // Re-append rows
                 tbody.innerHTML = '';
                 sortedRows.forEach(row => {
                     tbody.appendChild(row);
                 });
             };
+            
+            headers.forEach((header, index) => {
+                header.addEventListener('click', () => {
+                    const currentDirection = header.getAttribute('data-sort-direction') || 'desc';
+                    const newDirection = currentDirection === 'asc' ? 'desc' : 'asc';
+                    
+                    headers.forEach(h => {
+                        h.setAttribute('data-sort-direction', '');
+                        h.querySelector('.sort-indicator').textContent = '';
+                    });
+
+                    header.setAttribute('data-sort-direction', newDirection);
+                    header.querySelector('.sort-indicator').textContent = newDirection === 'asc' ? '▲' : '▼';
+                    
+                    sortColumn(index, newDirection);
+                });
+            });
+
+            // Set default sort by the first column ("出場順序")
+            const defaultSort = () => {
+                 const initialSortColumnIndex = 0;
+                 const initialSortHeader = headers[initialSortColumnIndex];
+                 initialSortHeader.setAttribute('data-sort-direction', 'asc');
+                 initialSortHeader.querySelector('.sort-indicator').textContent = '▲';
+                 sortColumn(initialSortColumnIndex, 'asc');
+            };
+            
+            defaultSort();
+
         });
     </script>
 
